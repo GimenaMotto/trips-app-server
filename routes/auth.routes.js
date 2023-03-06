@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 
 router.post('/signup', (req, res, next) => {
 
-    const { email, password, username, avatar, description, interests, role } = req.body
+    const { email, password, username, avatar, description, interests, role, gender, age } = req.body
 
     if (password.length < 2) {
         res.status(400).json({ message: 'Debe tener al menos 2 caracteres' })
@@ -26,7 +26,7 @@ router.post('/signup', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds)
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            return User.create({ email, password: hashedPassword, username, avatar, description, interests, role })
+            return User.create({ email, password: hashedPassword, username, avatar, description, interests, role, gender, age })
         })
         .then(() => res.sendStatus(201))
         .catch(err => next(err))
@@ -52,8 +52,8 @@ router.post('/login', (req, res, next) => {
 
             if (bcrypt.compareSync(password, foundUser.password)) {
 
-                const { _id, email, username, role, avatar, description, interests } = foundUser;
-                const payload = { _id, email, username, role, avatar, description, interests }
+                const { _id, email, username, role } = foundUser;
+                const payload = { _id, email, username, role }
 
                 const authToken = jwt.sign(
                     payload,

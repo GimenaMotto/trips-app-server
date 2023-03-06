@@ -34,8 +34,17 @@ const userSchema = new Schema(
     interests: {
       type: [String],
     },
-    favTrips: {
+    trips: {
       type: [String]
+    },
+    age: {
+      type: String,
+      // required: [true, 'La edad es obligatoria'],
+    },
+    gender: {
+      type: String,
+      // enum: ['mujer', 'hombre', 'no binario', 'no definido'],
+      // default: 'desconocido'
     }
   },
 

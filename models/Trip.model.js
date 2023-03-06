@@ -14,6 +14,7 @@ const tripSchema = new Schema(
         },
         startDate: {
             type: Date,
+            required: [true, "La fecha de comienzo de viaje es obligatoria"],
         },
         endDate: {
             type: Date,
@@ -31,12 +32,12 @@ const tripSchema = new Schema(
             },
             coordinates: [Number]
         },
-        participants: [{
+        travellers: [{
             ref: 'User',
             type: Schema.Types.ObjectId,
         }],
         budget: {
-            type: Number,
+            type: String,
             required: [true, "El presupuesto es obligatorio"]
         },
         // places_to_visit: {

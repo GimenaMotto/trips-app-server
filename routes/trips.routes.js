@@ -22,10 +22,10 @@ router.get('/getOneTrip/:trip_id', (req, res, next) => {
 
 router.post('/saveTrip', (req, res, next) => {
 
-  const { title, description, startDate, endDate, images, budget, destination, participants } = req.body
+  const { title, description, startDate, endDate, images, budget, destination, travellers } = req.body
 
   Trip
-    .create({ title, description, startDate, endDate, images, budget, destination, participants })
+    .create({ title, description, startDate, endDate, images, budget, destination, travellers })
     // .create({ ...req.body, organizer: req.payload._id })
     .then(response => res.json(response))
     .catch(err => next(err))
