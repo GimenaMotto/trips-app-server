@@ -43,6 +43,7 @@ const userSchema = new Schema(
     age: {
       type: String,
       // required: [true, 'La edad es obligatoria'],
+      //ver si ponemos numero y como en el form
     },
     gender: {
       type: String,
