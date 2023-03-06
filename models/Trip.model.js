@@ -20,7 +20,8 @@ const tripSchema = new Schema(
             type: Date,
         },
         images: {
-            type: [String]
+            type: [String],
+            default: ['https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg']
         },
         organizer: {
             ref: 'User',

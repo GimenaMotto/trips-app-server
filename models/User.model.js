@@ -22,6 +22,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
+      default: 'https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg'
     },
     description: {
       type: String,
@@ -34,17 +35,19 @@ const userSchema = new Schema(
     interests: {
       type: [String],
     },
-    trips: {
-      type: [String]
-    },
+    trips: [{
+      ref: 'Trip',
+      type: Schema.Types.ObjectId,
+    }],
+
     age: {
       type: String,
       // required: [true, 'La edad es obligatoria'],
     },
     gender: {
       type: String,
-      // enum: ['mujer', 'hombre', 'no binario', 'no definido'],
-      // default: 'desconocido'
+      enum: ['mujer', 'hombre', 'no binario', 'no definido'],
+      default: 'no definido'
     }
   },
 
