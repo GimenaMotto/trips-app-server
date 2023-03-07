@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const saltRounds = 10
 const jwt = require('jsonwebtoken')
-// const { verifyToken } = require("../middlewares/verifyToken")
+const { verifyToken } = require("../middlewares/verifyToken")
 
 router.post('/signup', (req, res, next) => {
 
@@ -71,8 +71,8 @@ router.post('/login', (req, res, next) => {
         .catch(err => next(err));
 })
 
-// router.get('/verify', verifyToken, (req, res, next) => {
-//     res.json(req.payload)
-// })
+router.get('/verify', verifyToken, (req, res, next) => {
+    res.json(req.payload)
+})
 
 module.exports = router
