@@ -47,8 +47,8 @@ const userSchema = new Schema(
     },
     gender: {
       type: String,
-      enum: ['mujer', 'hombre', 'no binario', 'no definido'],
-      default: 'no definido'
+      // enum: ['mujer', 'hombre', 'no binario', 'no definido'],
+      // default: 'no definido'
     }
   },
 
