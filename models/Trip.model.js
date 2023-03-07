@@ -28,10 +28,11 @@ const tripSchema = new Schema(
             type: Schema.Types.ObjectId,
         },
         destination: {
-            type: {
-                type: String
-            },
-            coordinates: [Number]
+            type: String
+            // type: {
+            //     type: String
+            // },
+            // coordinates: [Number]
         },
         travellers: [{
             ref: 'User',

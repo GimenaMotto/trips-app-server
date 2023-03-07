@@ -6,6 +6,7 @@ router.get('/getAllTrips', (req, res, next) => {
 
   Trip
     .find()
+    .sort({ startDate: 1 })
     .then(response => res.json(response))
     .catch(err => next(err))
 })
