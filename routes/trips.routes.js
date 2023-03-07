@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Trip = require('./../models/Trip.model')
+const fileUploader = require("../config/cloudinary.config")
 
 router.get('/getAllTrips', (req, res, next) => {
 
