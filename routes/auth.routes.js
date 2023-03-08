@@ -4,10 +4,11 @@ const User = require("../models/User.model")
 const saltRounds = 10
 const jwt = require('jsonwebtoken')
 const { verifyToken } = require("../middlewares/verifyToken")
+// const fileUploader = require('../../server/middlewares/cloudinary.middleware')
 
 router.post('/signup', (req, res, next) => {
 
-    const { email, password, username, avatar, description, interests, role, gender, age } = req.body
+    const { email, password, username, description, avatar, interests, role, gender, age } = req.body
 
     if (password.length < 2) {
         res.status(400).json({ message: 'Debe tener al menos 2 caracteres' })
