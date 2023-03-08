@@ -1,14 +1,32 @@
-const router = require("express").Router()
-const uploader = require('../config/cloudinary.config')
+// const router = require("express").Router()
+// const uploader = require('../config/cloudinary.config')
 
-router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
+// router.post("/image", uploader.single("imageData"), (req, res) => {
+
+//     if (!req.file) {
+//         res.status(500).json({ errorMessage: 'Error caragndo el archivo' })
+//         return
+//     }
+
+//     res.json({ cloudinary_url: req.file.path })
+// })
+
+// module.exports = router
+
+
+const router = require("express").Router()
+
+const uploader = require('./../middlewares/cloudinary.middleware')
+
+router.post('/image', uploader.single('imageData'), (req, res) => {
 
     if (!req.file) {
-        next(new Error("No file uploaded!"));
-        return;
+        res.status(500).json({ errorMessage: 'Error caragndo el archivo' })
+        return
     }
 
-    res.json({ fileUrl: req.file.path });
-});
+    res.json({ cloudinary_url: req.file.path })
+})
+
 
 module.exports = router
