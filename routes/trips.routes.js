@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { verifyToken } = require('../middlewares/verifyToken')
 const Trip = require('./../models/Trip.model')
 
 
@@ -17,19 +18,19 @@ router.get('/getOneTrip/:trip_id', (req, res, next) => {
 
   Trip
     .findById(trip_id)
-    // .populate('travellers', 'organizer')
+    .populate('organizer travellers')
     .then(response => res.json(response))
     .catch(err => next(err))
 })
 
 
-router.post('/saveTrip', (req, res, next) => {
+router.post('/saveTrip', verifyToken, (req, res, next) => {
 
   const { title, description, startDate, endDate, images, budget, destination, travellers } = req.body
+  const { _id: organizer } = req.payload
 
   Trip
-    .create({ ...req.body })
-    // .create({ ...req.body, organizer: req.payload._id })
+    .create({ title, description, startDate, endDate, images, budget, destination, travellers, organizer })
     .then(response => res.json(response))
     .catch(err => next(err))
 })
@@ -45,7 +46,7 @@ router.put('/editTrip/:trip_id', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.put('/join/:trip_id', (req, res, next) => {
+router.put('/join/:trip_id', verifyToken, (req, res, next) => {
 
   const { trip_id } = req.params
   const { _id: traveller } = req.payload
@@ -57,7 +58,7 @@ router.put('/join/:trip_id', (req, res, next) => {
 
 })
 
-router.put('/leave/:trip_id ', (req, res, next) => {
+router.put('/leave/:trip_id ', verifyToken, (req, res, next) => {
 
   const { trip_id } = req.params
   const { _id: traveller } = req.payload

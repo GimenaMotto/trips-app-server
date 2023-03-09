@@ -24,8 +24,9 @@ const tripSchema = new Schema(
             default: ['https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg']
         },
         organizer: {
-            ref: 'User',
+
             type: Schema.Types.ObjectId,
+            ref: 'User',
         },
         destination: {
             type: String
