@@ -4,7 +4,6 @@ const User = require("../models/User.model")
 const saltRounds = 10
 const jwt = require('jsonwebtoken')
 const { verifyToken } = require("../middlewares/verifyToken")
-// const fileUploader = require('../../server/middlewares/cloudinary.middleware')
 
 router.post('/signup', (req, res, next) => {
 
