@@ -29,7 +29,8 @@ const tripSchema = new Schema(
             ref: 'User',
         },
         destination: {
-            type: String
+            type: String,
+            required: [true, "El destino del viaje es obligatorio"],
             // type: {
             //     type: String
             // },
