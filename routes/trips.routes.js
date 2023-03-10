@@ -58,7 +58,7 @@ router.put('/join/:trip_id', verifyToken, (req, res, next) => {
 
 })
 
-router.put('/leave/:trip_id ', verifyToken, (req, res, next) => {
+router.put('/leave/:trip_id', verifyToken, (req, res, next) => {
 
   const { trip_id } = req.params
   const { _id: traveller } = req.payload
