@@ -21,7 +21,7 @@ const tripSchema = new Schema(
         },
         images: {
             type: [String],
-            // default: ['https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg']
+            default: ['https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg']
         },
         organizer: {
 
