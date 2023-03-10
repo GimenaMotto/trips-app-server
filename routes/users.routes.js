@@ -5,8 +5,8 @@ router.get('/getAllUsers', (req, res, next) => {
 
     User
         .find()
-        .sort({ createdAt: 1 })
-        .select({ username: 1, avatar: 1, description: 1 })
+        .sort({ username: 1 })
+        .select({ username: 1, avatar: 1, age: 1, gender: 1 })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
