@@ -11,15 +11,15 @@ router.get('/getAllUsers', (req, res, next) => {
         .catch(err => next(err))
 })
 
-// router.get('/getOneUser/:user_id', (req, res, next) => {
+router.get('/getOneUser/:user_id', (req, res, next) => {
 
-//     const { user_id } = req.params
+    const { user_id } = req.params
 
-//     User
-//         .findById(user_id)
-//         .then(response => res.json(response))
-//         .catch(err => next(err))
-// })
+    User
+        .findById(user_id)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 // router.put('/editUser/:user_id', (req, res, next) => {
 

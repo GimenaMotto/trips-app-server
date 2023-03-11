@@ -61,6 +61,10 @@ userSchema.pre('save', function (next) {
   const hashedPassword = bcrypt.hashSync(this.password, salt)
   this.password = hashedPassword
 
+  if (!this.avatar) {
+    this.avatar = 'https://res.cloudinary.com/dzq7qbklp/image/upload/v1678437959/movie-gallery/j7h3w4bggpbvugpeqblc.png'
+  }
+
   next()
 })
 
