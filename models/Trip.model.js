@@ -18,6 +18,7 @@ const tripSchema = new Schema(
         },
         endDate: {
             type: Date,
+            required: [true, "La fecha de regreso de viaje es obligatoria"],
         },
         images: {
             type: [String],
