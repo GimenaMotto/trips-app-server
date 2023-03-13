@@ -21,24 +21,26 @@ router.get('/getOneUser/:user_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-// router.put('/editUser/:user_id', (req, res, next) => {
+router.put('/editUser/:user_id', (req, res, next) => {
 
-//     const { user_id } = req.params
-//     const { avatar, description, role, interests, age, gender } = req.body
+    const { user_id } = req.params
+    const { avatar, description, role, interests, age, gender } = req.body
 
-//     User
-//         .findByIdAndUpdate(user_id, { ...req.body })
-//         .then(response => res.json(response))
-//         .catch(err => next(err))
-// })
+    User
+        .findByIdAndUpdate(user_id, { ...req.body })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
-// router.delete('/deleteUser/:user_id', (req, res, next) => {
+router.delete('/deleteUser/:user_id', (req, res, next) => {
 
-//     const { user_id } = req.params
+    const { user_id } = req.params
 
-//     User
-//         .findByIdAndDelete(user_id)
-//         .then(response => res.json(response))
-//         .catch(err => next(err))
-// })
+    User
+        .findByIdAndDelete(user_id)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+
 module.exports = router
