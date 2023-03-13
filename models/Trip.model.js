@@ -45,9 +45,6 @@ const tripSchema = new Schema(
             type: String,
             required: [true, "El presupuesto es obligatorio"]
         },
-        // places_to_visit: {
-        //     type: [Object]
-        // }
     },
 
     {
