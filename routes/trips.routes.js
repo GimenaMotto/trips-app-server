@@ -12,6 +12,16 @@ router.get('/getAllTrips', (req, res, next) => {
     .catch(err => next(err))
 })
 
+router.get('/organizer/:organizer', verifyToken, (req, res, next) => {
+
+  const { organizer } = req.params
+
+  Trip
+    .find({ organizer })
+    .then(response => res.json(response))
+    .catch(err => next(err))
+})
+
 router.get('/getOneTrip/:trip_id', (req, res, next) => {
 
   const { trip_id } = req.params
@@ -23,17 +33,23 @@ router.get('/getOneTrip/:trip_id', (req, res, next) => {
     .catch(err => next(err))
 })
 
-
 router.post('/saveTrip', verifyToken, (req, res, next) => {
 
   const { title, description, startDate, endDate, images, budget, destination, travellers } = req.body
   const { _id: organizer } = req.payload
 
+  let tripImages = images
+
+  if (!tripImages || tripImages.length === 0) {
+    tripImages = ['https://res.cloudinary.com/dzq7qbklp/image/upload/v1678716866/movie-gallery/yu5zye8otu0feitubnwg.jpg']
+  }
+
   Trip
-    .create({ title, description, startDate, endDate, images, budget, destination, travellers, organizer })
+    .create({ title, description, startDate, endDate, images: tripImages, budget, destination, travellers, organizer })
     .then(response => res.json(response))
     .catch(err => next(err))
 })
+
 
 router.put('/editTrip/:trip_id', (req, res, next) => {
 

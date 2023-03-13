@@ -1,10 +1,8 @@
-
 const router = require("express").Router()
 
 const uploader = require('./../middlewares/cloudinary.middleware')
 
 router.post('/image', uploader.array('imageData', 10), (req, res) => {
-
 
     if (!req.files) {
         res.status(500).json({ errorMessage: 'Error cargando el archivo' })
@@ -15,6 +13,5 @@ router.post('/image', uploader.array('imageData', 10), (req, res) => {
 
     res.json(images)
 })
-
 
 module.exports = router
