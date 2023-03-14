@@ -30,12 +30,16 @@ const tripSchema = new Schema(
             ref: 'User',
         },
         destination: {
-            type: String,
-            required: [true, "El destino del viaje es obligatorio"],
-            // type: {
-            //     type: String
+            // latitude: {
+            //     type: Number
             // },
-            // coordinates: [Number]
+            // longitude: {
+            //     type: Number
+            // }
+            type: {
+                type: String
+            },
+            coordinates: [Number]
         },
         travellers: [{
             ref: 'User',

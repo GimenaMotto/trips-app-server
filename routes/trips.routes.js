@@ -35,8 +35,13 @@ router.get('/getOneTrip/:trip_id', (req, res, next) => {
 
 router.post('/saveTrip', verifyToken, (req, res, next) => {
 
-  const { title, description, startDate, endDate, images, budget, destination, travellers } = req.body
+  const { title, description, startDate, endDate, images, budget, latitude, longitude, travellers } = req.body
   const { _id: organizer } = req.payload
+  const destination = {
+    type: 'Point',
+    coordinates: [latitude, longitude]
+  }
+
 
   let tripImages = images
 
