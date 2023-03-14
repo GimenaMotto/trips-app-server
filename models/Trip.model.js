@@ -30,12 +30,6 @@ const tripSchema = new Schema(
             ref: 'User',
         },
         destination: {
-            // latitude: {
-            //     type: Number
-            // },
-            // longitude: {
-            //     type: Number
-            // }
             type: {
                 type: String
             },
