@@ -27,8 +27,13 @@ router.put('/editUser/:user_id', (req, res, next) => {
     const { avatar, description, role, interests, age, gender } = req.body
 
     User
-        .findByIdAndUpdate(user_id, { ...req.body })
-        .then(response => res.json(response))
+        .findById(user_id)
+        .then(user => {
+            if (avatar === '') { avatar = user.avatar }
+            User
+                .findByIdAndUpdate(user_id, { avatar, description, role, interests, age, gender })
+                .then(response => res.json(response))
+        })
         .catch(err => next(err))
 })
 
